@@ -1,0 +1,196 @@
+TRAINERY CORE - COMPLETE FOLDER STRUCTURE
+==========================================
+
+ROOT DIRECTORY: F:\Trainery-core\
+
+src/
+├── App.css
+├── App.tsx
+├── design-system.d.ts
+├── index.css
+├── main.tsx
+├── vite-env.d.ts
+│
+├── assets/
+│   └── react.svg
+│
+├── components/
+│   ├── index.ts (Main barrel export for all components)
+│   │
+│   ├── chart/ (Organization chart components)
+│   │   ├── EmployeeNode.tsx
+│   │   ├── OrganizationChart.tsx
+│   │   └── index.ts
+│   │
+│   ├── charts/ (Data visualization charts)
+│   │   ├── AgeChart.tsx
+│   │   ├── GenderChart.tsx
+│   │   ├── TypeChart.tsx
+│   │   └── index.ts
+│   │
+│   ├── common/ (Reusable UI components)
+│   │   ├── ErrorState.tsx
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── Modal.tsx
+│   │   ├── Sidebar.tsx (BaseSidebar)
+│   │   ├── TabNavigation.tsx
+│   │   └── index.ts
+│   │
+│   ├── employee/ (Employee management components)
+│   │   ├── EmployeeBoard.tsx
+│   │   ├── EmployeeList.tsx
+│   │   ├── EmployeeTable.tsx
+│   │   └── index.ts
+│   │
+│   ├── layout/ (Layout and navigation components)
+│   │   ├── Sidebar.tsx (Main app sidebar)
+│   │   ├── TopNavigation.tsx
+│   │   └── index.ts
+│   │
+│   ├── maps/ (Map and location components)
+│   │   ├── LocationMap.tsx
+│   │   └── index.ts
+│   │
+│   ├── modals/ (Modal and sidebar components)
+│   │   ├── AddEmployeeSidebar.tsx
+│   │   ├── EmployeeDetailsSidebar.tsx
+│   │   ├── EmployeeImportHistoryModal.tsx
+│   │   ├── ManageCardsModal.tsx
+│   │   └── index.ts
+│   │
+│   ├── stats/ (Statistics and metrics components)
+│   │   ├── StatCard.tsx
+│   │   ├── StatsCards.tsx
+│   │   └── index.ts
+│   │
+│   ├── ui/ (Shadcn UI components)
+│   │   ├── button.tsx
+│   │   ├── calendar.tsx
+│   │   ├── date-picker.tsx
+│   │   ├── popover.tsx
+│   │   └── index.ts
+│   │
+│   └── workforce/ (Workforce management components)
+│       ├── WorkforceControls.tsx
+│       ├── WorkforceHeader.tsx
+│       └── index.ts
+│
+├── data/ (Empty directory)
+│
+├── hooks/ (Custom React hooks)
+│   ├── useWorkforceData.ts
+│   └── useWorkforceView.ts
+│
+├── lib/ (Utility libraries)
+│   └── utils.ts
+│
+├── pages/ (Page-level components and forms)
+│   ├── PeopleChart.tsx (Main people chart page)
+│   ├── WorkforceOverview.tsx (Main workforce overview page)
+│   │
+│   ├── employee-details/ (Employee detail sections)
+│   │   ├── AdminSection.tsx
+│   │   ├── ContactInfoSection.tsx
+│   │   ├── DocumentsSection.tsx
+│   │   ├── EducationSection.tsx
+│   │   ├── EmployeeSubNavigation.tsx
+│   │   ├── ExperienceSection.tsx
+│   │   ├── JobInfoSection.tsx
+│   │   ├── NotesSection.tsx
+│   │   ├── PerformanceSection.tsx
+│   │   ├── PersonalInfoSection.tsx
+│   │   ├── ProfileSection.tsx
+│   │   ├── UpdatesSection.tsx
+│   │   ├── index.ts
+│   │   └── sections/ (Modular profile sections)
+│   │       ├── ContactInfoSection.tsx
+│   │       ├── DatesSection.tsx
+│   │       ├── JobDetailsSection.tsx
+│   │       └── index.ts
+│   │
+│   └── forms/ (Form components and tabs)
+│       ├── EducationTab.tsx
+│       ├── ExperienceTab.tsx
+│       ├── FormField.tsx
+│       ├── JobDetailsTab.tsx
+│       ├── PersonalDetailsTab.tsx
+│       ├── ProfilePictureUpload.tsx
+│       ├── SidebarFooter.tsx
+│       ├── SidebarHeader.tsx
+│       ├── TabNavigation.tsx
+│       └── index.ts
+│
+├── services/ (Data services and API)
+│   ├── dashboardService.ts
+│   └── employeeService.ts
+│
+└── stores/ (State management with Zustand)
+    ├── employeeDetailsStore.ts
+    └── employeeFormStore.ts
+
+COMPONENT CATEGORIES EXPLANATION:
+=================================
+
+CHART COMPONENTS:
+- chart/ = Organization chart components (hierarchical employee structure)
+- charts/ = Data visualization charts (age, gender, type distributions)
+
+COMMON COMPONENTS:
+- common/ = Reusable UI components used across the application
+- ui/ = Shadcn UI component library components
+
+EMPLOYEE COMPONENTS:
+- employee/ = Employee listing and management components
+- modals/ = Employee-related modals and sidebars
+
+LAYOUT COMPONENTS:
+- layout/ = Main application layout components (sidebar, navigation)
+- maps/ = Map and location-based components
+
+STATISTICS COMPONENTS:
+- stats/ = Statistics cards and metrics display components
+
+WORKFORCE COMPONENTS:
+- workforce/ = Workforce management specific components
+
+PAGE COMPONENTS:
+- pages/ = Main page components and complex form components
+- employee-details/ = Employee detail page sections
+- forms/ = Form components and tabs
+
+IMPORT PATTERNS:
+===============
+
+From components folder:
+import { ComponentName } from '../components';
+
+From specific component category:
+import { ComponentName } from '../components/charts';
+import { ComponentName } from '../components/employee';
+import { ComponentName } from '../components/modals';
+
+From pages folder:
+import { ComponentName } from '../pages/employee-details';
+import { ComponentName } from '../pages/forms';
+
+BARREL EXPORTS:
+==============
+
+Each folder has an index.ts file that exports all components in that folder.
+Main components/index.ts exports all categories for easy importing.
+
+FOLDER NAMING CONVENTIONS:
+=========================
+
+- chart/ = Singular, for organization charts
+- charts/ = Plural, for data visualization charts
+- common/ = Reusable components
+- employee/ = Employee management
+- layout/ = Layout components
+- maps/ = Map components
+- modals/ = Modal and sidebar components
+- stats/ = Statistics components
+- ui/ = UI library components
+- workforce/ = Workforce management
+
+This structure ensures clear separation of concerns and easy navigation.

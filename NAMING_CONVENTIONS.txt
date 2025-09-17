@@ -1,0 +1,138 @@
+TRAINERY CORE - NAMING CONVENTIONS AND FOLDER STRUCTURE
+=======================================================
+
+FOLDER NAMING RULES:
+===================
+
+1. SINGULAR vs PLURAL:
+   - chart/ = Organization chart components (hierarchical structure)
+   - charts/ = Data visualization charts (multiple chart types)
+   - employee/ = Employee management components
+   - modals/ = Modal and sidebar components (multiple types)
+   - stats/ = Statistics components (multiple stat types)
+   - maps/ = Map components (location-based)
+
+2. DESCRIPTIVE NAMES:
+   - common/ = Reusable UI components
+   - layout/ = Layout and navigation components
+   - workforce/ = Workforce management components
+   - ui/ = UI library components (Shadcn)
+
+3. CLEAR SEPARATION:
+   - chart/ vs charts/ = Different purposes, clear distinction
+   - employee/ vs workforce/ = Employee management vs workforce overview
+   - modals/ vs layout/ = Modal components vs layout components
+
+COMPONENT NAMING RULES:
+======================
+
+1. PASCAL CASE:
+   - All component files use PascalCase: EmployeeBoard.tsx
+   - All component names use PascalCase: EmployeeBoard
+
+2. DESCRIPTIVE NAMES:
+   - EmployeeBoard.tsx = Board view of employees
+   - EmployeeList.tsx = List view of employees
+   - EmployeeTable.tsx = Table view of employees
+   - AddEmployeeSidebar.tsx = Sidebar for adding employees
+   - EmployeeDetailsSidebar.tsx = Sidebar for employee details
+
+3. AVOID CONFLICTS:
+   - Sidebar.tsx (layout) = Main app sidebar
+   - BaseSidebar.tsx (common) = Reusable sidebar component
+   - TabNavigation.tsx (common) = Reusable tab navigation
+   - TabNavigation.tsx (forms) = Form-specific tab navigation
+
+FOLDER STRUCTURE LOGIC:
+======================
+
+components/
+├── chart/           = Organization charts (hierarchical)
+├── charts/          = Data visualization charts
+├── common/          = Reusable UI components
+├── employee/        = Employee management
+├── layout/          = Layout components
+├── maps/            = Map components
+├── modals/          = Modal and sidebar components
+├── stats/           = Statistics components
+├── ui/              = UI library components
+└── workforce/       = Workforce management
+
+pages/
+├── employee-details/ = Employee detail sections
+├── forms/           = Form components
+├── PeopleChart.tsx  = Main people page
+└── WorkforceOverview.tsx = Main workforce page
+
+IMPORT PATTERNS:
+===============
+
+1. FROM COMPONENTS:
+   import { ComponentName } from '../components';
+
+2. FROM SPECIFIC CATEGORY:
+   import { ComponentName } from '../components/charts';
+   import { ComponentName } from '../components/employee';
+
+3. FROM PAGES:
+   import { ComponentName } from '../pages/employee-details';
+   import { ComponentName } from '../pages/forms';
+
+4. AVOID CONFLICTS:
+   import { Sidebar } from '../components/layout';        // Main app sidebar
+   import { BaseSidebar } from '../components/common';    // Reusable sidebar
+
+BARREL EXPORT RULES:
+===================
+
+1. EACH FOLDER HAS index.ts:
+   - Exports all components in that folder
+   - Uses named exports, not default exports
+   - Includes type exports where needed
+
+2. MAIN COMPONENTS index.ts:
+   - Explicitly lists all exports to avoid conflicts
+   - Groups by category with comments
+   - Resolves naming conflicts by being specific
+
+3. NAMING CONFLICTS RESOLVED:
+   - Sidebar (layout) vs BaseSidebar (common)
+   - TabNavigation (common) vs TabNavigation (forms) - different paths
+
+FILE ORGANIZATION RULES:
+=======================
+
+1. RELATED COMPONENTS GROUPED:
+   - All employee components in employee/
+   - All chart components in charts/ or chart/
+   - All modal components in modals/
+
+2. REUSABLE COMPONENTS SEPARATED:
+   - Common UI components in common/
+   - UI library components in ui/
+   - Layout components in layout/
+
+3. PAGE-LEVEL COMPONENTS IN PAGES:
+   - Complex form components in pages/forms/
+   - Employee detail sections in pages/employee-details/
+   - Main pages in pages/ root
+
+AVOIDING CONFUSION:
+==================
+
+1. CLEAR FOLDER NAMES:
+   - chart/ vs charts/ = Different purposes
+   - employee/ vs workforce/ = Different scopes
+   - modals/ vs layout/ = Different types
+
+2. EXPLICIT EXPORTS:
+   - Main index.ts lists all exports explicitly
+   - No wildcard exports that could cause conflicts
+   - Clear component names that describe purpose
+
+3. CONSISTENT PATTERNS:
+   - All folders follow same naming convention
+   - All index.ts files follow same export pattern
+   - All imports follow same path pattern
+
+This structure ensures no confusion and clear separation of concerns.

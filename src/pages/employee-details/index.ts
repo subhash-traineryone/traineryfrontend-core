@@ -1,0 +1,10 @@
+export { ProfileSection } from './ProfileSection';
+export { PerformanceSection } from './PerformanceSection';
+export { default as DocumentsSection } from './DocumentsSection';
+export { AdminSection } from './AdminSection';
+export { UpdatesSection } from './UpdatesSection';
+export { PersonalInfoSection } from './PersonalInfoSection';
+export { JobInfoSection } from './JobInfoSection';
+export { ContactInfoSection } from './ContactInfoSection';
+export { NotesSection } from './NotesSection';
+export { EmployeeSubNavigation } from './EmployeeSubNavigation';
