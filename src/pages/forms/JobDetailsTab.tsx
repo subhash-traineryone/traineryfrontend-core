@@ -202,6 +202,14 @@ export const JobDetailsTab: React.FC<JobDetailsTabProps> = () => {
               onChange={(value) => updateField('startDate', value)}
               placeholder="Choose date"
             />
+
+            <FormField
+              label="Position Date"
+              type="date"
+              value={formData.positionDate}
+              onChange={(value) => updateField('positionDate', value)}
+              placeholder="Choose date"
+            />
           </div>
         </div>
       </div>

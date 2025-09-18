@@ -85,7 +85,8 @@ const AddEmployeeSidebar: React.FC<AddEmployeeSidebarProps> = ({
     
     try {
     // Generate avatar data
-    const avatarInitial = formData.name.charAt(0).toUpperCase();
+    const fullName = `${formData.firstName} ${formData.lastName}`.trim();
+    const avatarInitial = formData.firstName.charAt(0).toUpperCase();
     const avatarColors = [
       'bg-[#b1e3ff]', 'bg-[#ffcb83]', 'bg-[#c6c7f8]', 'bg-[#a8c5da]',
       'bg-[#ffe999]', 'bg-[#a1e3cb]', 'bg-[#baedbd]'
@@ -93,7 +94,7 @@ const AddEmployeeSidebar: React.FC<AddEmployeeSidebarProps> = ({
     const randomColor = avatarColors[Math.floor(Math.random() * avatarColors.length)];
 
     const newEmployeeData = {
-      name: formData.name,
+      name: fullName,
       empId: formData.employeeId,
       email: formData.email,
         jobTitle: formData.title || 'New Employee',

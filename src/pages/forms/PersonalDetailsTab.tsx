@@ -35,12 +35,21 @@ export const PersonalDetailsTab: React.FC<PersonalDetailsTabProps> = () => {
           {/* Left Column */}
           <div className="space-y-4">
             <FormField
-              label="Name"
+              label="First Name"
               type="text"
-              value={formData.name}
-              onChange={(value) => updateField('name', value)}
+              value={formData.firstName}
+              onChange={(value) => updateField('firstName', value)}
               placeholder="Type here"
-              error={errors.name}
+              error={errors.firstName}
+            />
+
+            <FormField
+              label="Last Name"
+              type="text"
+              value={formData.lastName}
+              onChange={(value) => updateField('lastName', value)}
+              placeholder="Type here"
+              error={errors.lastName}
             />
 
             <FormField

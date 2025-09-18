@@ -3,7 +3,8 @@ import { devtools } from 'zustand/middleware';
 
 export interface EmployeeFormData {
   // Personal Details
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   employmentType: string;
   dob: Date | undefined;
@@ -39,6 +40,7 @@ export interface EmployeeFormData {
   // Dates
   hireDate: Date | undefined;
   startDate: Date | undefined;
+  positionDate: Date | undefined;
   
   // Profile Picture
   profilePicture: File | null;
@@ -105,7 +107,8 @@ interface EmployeeFormStore {
 }
 
 const initialFormData: EmployeeFormData = {
-  name: '',
+  firstName: '',
+  lastName: '',
   email: '',
   employmentType: 'Permanent',
   dob: undefined,
@@ -133,6 +136,7 @@ const initialFormData: EmployeeFormData = {
   hrPartner: '',
   hireDate: undefined,
   startDate: undefined,
+  positionDate: undefined,
   profilePicture: null,
   
   // Education
@@ -199,7 +203,8 @@ export const useEmployeeFormStore = create<EmployeeFormStore>()(
         const newErrors: EmployeeFormErrors = {};
 
         // Required fields validation
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
+        if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
+        if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         if (!formData.employeeId.trim()) newErrors.employeeId = 'Employee ID is required';
         if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
@@ -233,7 +238,8 @@ export const useEmployeeFormStore = create<EmployeeFormStore>()(
         const newErrors: EmployeeFormErrors = {};
 
         // Personal Details required fields
-        if (!formData.name.trim()) newErrors.name = 'Name is required';
+        if (!formData.firstName.trim()) newErrors.firstName = 'First Name is required';
+        if (!formData.lastName.trim()) newErrors.lastName = 'Last Name is required';
         if (!formData.email.trim()) newErrors.email = 'Email is required';
         if (!formData.employeeId.trim()) newErrors.employeeId = 'Employee ID is required';
         if (!formData.phone.trim()) newErrors.phone = 'Phone is required';
@@ -419,7 +425,8 @@ export const useEmployeeFormStore = create<EmployeeFormStore>()(
       isPersonalDetailsCompleted: () => {
         const { formData } = get();
         return !!(
-          formData.name.trim() &&
+          formData.firstName.trim() &&
+          formData.lastName.trim() &&
           formData.email.trim() &&
           formData.employeeId.trim() &&
           formData.phone.trim()
