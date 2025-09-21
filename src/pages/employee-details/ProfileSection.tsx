@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import type { EmployeeDetails } from '../../stores/employeeDetailsStore';
 import { useEmployeeDetailsStore } from '../../stores/employeeDetailsStore';
-import { TabNavigation, type Tab } from '../../components/common';
+import { TabNavigation, type Tab, EmployeeOrgChart } from '../../components';
+import { employeeService } from '../../services/employeeService';
 import { JobDetailsSection } from './sections/JobDetailsSection';
 import { DatesSection } from './sections/DatesSection';
 import { ContactInfoSection } from './sections/ContactInfoSection';
@@ -42,11 +43,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
             />
             
             {/* Separator */}
-            <div className="flex flex-col items-start justify-start w-full">
-              <div className="h-0 relative shrink-0 w-full">
-                <div className="absolute bottom-0 left-0 right-0 top-[-1px] border-b border-slate-200" />
-              </div>
-            </div>
+            <div className="w-full h-px bg-slate-200" />
             
             {/* Dates Section */}
             <DatesSection 
@@ -55,11 +52,7 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
             />
             
             {/* Separator */}
-            <div className="flex flex-col items-start justify-start w-full">
-              <div className="h-0 relative shrink-0 w-full">
-                <div className="absolute bottom-0 left-0 right-0 top-[-1px] border-b border-slate-200" />
-              </div>
-            </div>
+            <div className="w-full h-px bg-slate-200" />
             
             {/* Contact Information Section */}
             <ContactInfoSection 
@@ -84,9 +77,26 @@ export const ProfileSection: React.FC<ProfileSectionProps> = ({
         );
       case 'orgchart':
         return (
-          <div className="p-6 text-center text-slate-500">
-            <p>Org Chart view coming soon...</p>
-          </div>
+          <EmployeeOrgChart 
+            employee={{
+              id: employee.id,
+              name: employee.name,
+              empId: employee.empId,
+              email: employee.email,
+              jobTitle: employee.jobTitle,
+              grade: employee.grade,
+              lastLogin: employee.lastLogin,
+              manager: employee.manager,
+              hrPartner: employee.hrPartner,
+              location: employee.location,
+              department: employee.department,
+              source: employee.source,
+              status: employee.status,
+              avatarColor: employee.avatarColor,
+              avatarInitial: employee.avatarInitial
+            }}
+            allEmployees={employeeService.getAllEmployees()}
+          />
         );
       default:
         return null;

@@ -17,7 +17,6 @@ const PeopleChartRefactored: React.FC = () => {
     viewMode,
     searchTerm,
     isSelectAll,
-    expandedNodes,
     changeViewMode,
     updateSearchTerm,
     toggleSelectAll,
@@ -106,7 +105,6 @@ const PeopleChartRefactored: React.FC = () => {
         {viewMode === 'chart' && (
           <OrganizationChart
             employees={employees}
-            expandedNodes={expandedNodes}
             onToggleNode={toggleNodeExpansion}
           />
         )}

@@ -6,7 +6,7 @@ export type { Tab } from './common';
 export { Button, buttonVariants, Calendar, DatePicker, Popover, PopoverTrigger, PopoverContent } from './ui';
 
 // Chart Components
-export { EmployeeNode, OrganizationChart } from './chart';
+export { EmployeeNode, OrganizationChart, EmployeeOrgChart } from './chart';
 export { AgeChart, GenderChart, TypeChart } from './charts';
 
 // Employee Components

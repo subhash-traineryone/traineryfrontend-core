@@ -15,8 +15,8 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, change, changeType, p
     <div className="bg-white rounded-lg border border-gray-200 p-6 w-full h-[136px] flex flex-col justify-between">
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-gray-900">{title}</span>
-          <button className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer" title="More info">
+          <span className="text-sm font-medium text-gray-900 truncate">{title}</span>
+          <button className="w-3.5 h-3.5 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer flex-shrink-0" title="More info">
             <Info className="w-3.5 h-3.5" />
           </button>
         </div>

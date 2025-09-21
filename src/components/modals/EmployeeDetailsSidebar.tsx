@@ -8,6 +8,7 @@ import { PerformanceSection } from '../../pages/employee-details/PerformanceSect
 import DocumentsSection from '../../pages/employee-details/DocumentsSection';
 import { AdminSection } from '../../pages/employee-details/AdminSection';
 import { UpdatesSection } from '../../pages/employee-details/UpdatesSection';
+import { ConfirmationDialog } from '../common';
 
 const EmployeeDetailsSidebar: React.FC = () => {
   const { 
@@ -24,6 +25,8 @@ const EmployeeDetailsSidebar: React.FC = () => {
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [isContentVisible, setIsContentVisible] = useState(false);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     if (isSidebarOpen) {
@@ -44,10 +47,26 @@ const EmployeeDetailsSidebar: React.FC = () => {
     await updateEmployee(updates);
   };
 
-  const handleDelete = async () => {
-    if (window.confirm('Are you sure you want to delete this employee?')) {
+  const handleDelete = () => {
+    setShowDeleteDialog(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    setIsDeleting(true);
+    try {
       await deleteEmployee(selectedEmployee.id);
+      setShowDeleteDialog(false);
+    } catch (error) {
+      console.error('Error deleting employee:', error);
+    } finally {
+      setIsDeleting(false);
     }
+  };
+
+  const handleSaveAll = async () => {
+    // This function can be used to save any global changes
+    // Individual sections handle their own saves now
+    console.log('Save all changes - individual sections handle their own saves');
   };
 
   const renderSectionContent = () => {
@@ -157,9 +176,9 @@ const EmployeeDetailsSidebar: React.FC = () => {
             <button
               onClick={handleDelete}
               disabled={isLoading}
-              className="bg-[#4b45e5] flex gap-1 items-center justify-center min-w-20 px-3 py-2 relative rounded-[6px] text-white font-medium text-[14px] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-3 py-2 text-sm font-medium text-red-600 border border-red-200 rounded-md hover:bg-red-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {isLoading ? 'Processing...' : 'Save changes'}
+              Delete Employee
             </button>
           </div>
         </div>
@@ -301,6 +320,19 @@ const EmployeeDetailsSidebar: React.FC = () => {
       >
         <X className="w-4 h-4" />
       </button>
+
+      {/* Delete Confirmation Dialog */}
+      <ConfirmationDialog
+        isOpen={showDeleteDialog}
+        onClose={() => setShowDeleteDialog(false)}
+        onConfirm={handleConfirmDelete}
+        title="Delete Employee"
+        message={`Are you sure you want to delete ${selectedEmployee?.name}? This action cannot be undone.`}
+        confirmText="Delete Employee"
+        cancelText="Cancel"
+        type="warning"
+        isLoading={isDeleting}
+      />
     </>
   );
 };
